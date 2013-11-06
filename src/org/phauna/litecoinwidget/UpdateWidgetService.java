@@ -153,6 +153,8 @@ public class UpdateWidgetService extends Service {
         priceBTC = downloaders.getVircurexPrice(coin);
       } else if (eid.equals(C.EXCH_CRSY)) {
         priceBTC = downloaders.getCryptsyPrice(coin);
+      } else if (eid.equals(C.EXCH_MCXN)) {
+        priceBTC = downloaders.getMcxnowPrice(coin);
       } else if (eid.equals(C.EXCH_BTCE)) {
         if (coin.equals("BTC") || coin.equals("LTC")) {
           if (owc.equals("RUR") || owc.equals("USD")) {
@@ -244,6 +246,8 @@ public class UpdateWidgetService extends Service {
         picId = R.drawable.novacoin;
       } else if (coin.equals("DVC")) {
         picId = R.drawable.devcoin;
+      } else if (coin.equals("XPM")) {
+        picId = R.drawable.primecoin;
       }
       remoteViews.setImageViewResource(R.id.widgetpic, picId);
       double btcDouble = result.getPriceBTC();
@@ -254,7 +258,7 @@ public class UpdateWidgetService extends Service {
         String btcString = "";
         if (btcDouble != 0) {
           // extra precision for these coins:
-          if (coin.equals("PPC") || coin.equals("NMC") || coin.equals("FTC") || coin.equals ("FRC") || coin.equals("DVC")) {
+          if (coin.equals("PPC") || coin.equals("NMC") || coin.equals("FTC") || coin.equals ("FRC") || coin.equals("DVC") || coin.equals("XPM")) {
             btcString = "B" + roundBTCX(btcDouble);
           } else {
             btcString = "B" + roundBTC(btcDouble);

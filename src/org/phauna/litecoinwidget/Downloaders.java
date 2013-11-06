@@ -21,6 +21,11 @@ import java.util.Date;
 import android.util.Log;
 import android.widget.Toast;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
+
 public class Downloaders {
 
   private UpdateWidgetService.GetPriceTask.Toaster mToaster;
@@ -82,17 +87,14 @@ public class Downloaders {
     from = from.toUpperCase();
     to = to.toUpperCase();
     try {
-      URL url = new URL("http://rate-exchange.appspot.com/currency?from=" + from + "&to=" + to);
-      String json = downloadReq(url);
-      if (json == null) return 0;
-      try {
-        JSONObject j = new JSONObject(json);
-        Log.d(C.LOG, "got json: " + j.toString());
-        double price = j.getDouble("rate");
-        return price;
-      } catch (JSONException e) {
-        toastLong("jsonException parsing: " + json);
-      }
+      //URL url = new URL("http://rate-exchange.appspot.com/currency?from=" + from + "&to=" + to);
+      URL url = new URL("http://download.finance.yahoo.com/d/quotes.csv?s=" + from + to +"=X&f=l1");
+      String csv = downloadReq(url);
+      if (csv == null) return 0;
+      //JSONObject j = new JSONObject(json);
+      //Log.d(C.LOG, "got json: " + j.toString());
+      double price = Double.parseDouble(csv);
+      return price;
     } catch (MalformedURLException e) {
       assert false;
     }
@@ -110,6 +112,27 @@ public class Downloaders {
         return price;
       } catch (JSONException e) {
         toastLong("jsonException parsing: " + json);
+      }
+    } catch (MalformedURLException e) {
+      assert false;
+    }
+    return 0;
+  }
+
+  public double getMcxnowPrice(String coin) {
+    try {
+      URL url = new URL("https://mcxnow.com/orders?cur=" + coin);
+      String xml = downloadReq(url);
+      if (xml == null) return 0;
+      try {
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        DocumentBuilder db = dbf.newDocumentBuilder();
+        Document doc = db.parse(new InputSource(new StringReader(xml)));
+        String priceString = doc.getElementsByTagName("lprice").item(0).getTextContent();
+        double price = Double.parseDouble(priceString);
+        return price;
+      } catch (Exception e) {
+        toastLong("Exception parsing: " + xml);
       }
     } catch (MalformedURLException e) {
       assert false;

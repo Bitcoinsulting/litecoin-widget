@@ -5,6 +5,7 @@ import java.util.Currency;
 public class C {
   public static final String EXCH_CRSY = "exch_crsy";
   public static final String EXCH_VREX = "exch_vrex";
+  public static final String EXCH_MCXN = "exch_mcxn";
   public static final String EXCH_MGOX = "exch_mgox";
   public static final String EXCH_BTCE = "exch_btce";
   public static final String EXCH_BSTP = "exch_bstp";
@@ -17,6 +18,8 @@ public class C {
       return R.array.array_vrex_coins;
     } else if (exchange.equals(EXCH_BTCE)) {
       return R.array.array_btce_coins;
+    } else if (exchange.equals(EXCH_MCXN)) {
+      return R.array.array_mcxn_coins;
     } else if (exchange.equals(EXCH_CRSY)) {
       return R.array.array_crsy_coins;
     } else if (exchange.equals(EXCH_MGOX) || exchange.equals(EXCH_CPBX) || exchange.equals(EXCH_BSTP) || exchange.equals(EXCH_CBSE) || exchange.equals(EXCH_VRTX)) {
@@ -45,6 +48,8 @@ public class C {
       return "V'rex";
     } else if (exchange.equals(EXCH_CRSY)) {
       return "C'tsy";
+    } else if (exchange.equals(EXCH_MCXN)) {
+      return "mcxNW";
     } else if (exchange.equals(EXCH_BTCE)) {
       return "Btc-e";
     } else if (exchange.equals(EXCH_MGOX)) {

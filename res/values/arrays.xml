@@ -1,24 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
  <string-array name="array_exchanges">
-  <item>Cryptsy</item>
-  <item>Vircurex</item>
-  <item>Btc-e</item>
-  <item>Mtgox</item>
   <item>Bitstamp</item>
+  <item>Btc-e</item>
   <item>Campbx</item>
-  <item>Coinbase</item>
   <item>CaVirtex</item>
+  <item>Coinbase</item>
+  <item>Cryptsy</item>
+  <item>mcxNOW</item>
+  <item>Mtgox</item>
+  <item>Vircurex</item>
  </string-array>
  <string-array name="array_exchange_values">
-  <item>exch_crsy</item>
-  <item>exch_vrex</item>
-  <item>exch_btce</item>
-  <item>exch_mgox</item>
   <item>exch_bstp</item>
+  <item>exch_btce</item>
   <item>exch_cpbx</item>
-  <item>exch_cbse</item>
   <item>exch_vrtx</item>
+  <item>exch_cbse</item>
+  <item>exch_crsy</item>
+  <item>exch_mcxn</item>
+  <item>exch_mgox</item>
+  <item>exch_vrex</item>
+ </string-array>
+
+ <string-array name="array_mcxn_coins">
+   <item>LTC</item>
+   <item>XPM</item>
+   <item>PPC</item>
+   <item>FTC</item>
  </string-array>
 
  <string-array name="array_vrex_coins">
@@ -56,6 +65,7 @@
   <item>NVC</item>
   <item>TRC</item>
   <item>FTC</item>
+  <item>XPM</item>
  </string-array>
 
  <string-array name="array_owc_names">
