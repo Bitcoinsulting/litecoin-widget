@@ -182,11 +182,25 @@ public class UpdateWidgetService extends Service {
           priceOWC = convertFrom(C.USD, downloaders, priceOWC, owc);
           estimatedPriceOWC = true;
         }
+      } else if (eid.equals(C.EXCH_BITC)) {
+        priceOWC = downloaders.getBit2cPrice();
+        cache.updatePrice(eid, (float) priceOWC);
+        if (!owc.equals("ILS")) {
+          priceOWC = convertFrom(C.ILS, downloaders, priceOWC, owc);
+          estimatedPriceOWC = true;
+        }
       } else if (eid.equals(C.EXCH_BSTP)) {
         priceOWC = downloaders.getBitstampPrice();
         cache.updatePrice(eid, (float) priceOWC);
         if (!owc.equals("USD")) {
           priceOWC = convertFrom(C.USD, downloaders, priceOWC, owc);
+          estimatedPriceOWC = true;
+        }
+      } else if (eid.equals(C.EXCH_CHNA)) {
+        priceOWC = downloaders.getBtcchinaPrice();
+        cache.updatePrice(eid, (float) priceOWC);
+        if (!owc.equals("CNY")) {
+          priceOWC = convertFrom(C.CNY, downloaders, priceOWC, owc);
           estimatedPriceOWC = true;
         }
       } else if (eid.equals(C.EXCH_CPBX)) {

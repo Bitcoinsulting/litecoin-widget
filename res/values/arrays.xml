@@ -2,6 +2,8 @@
 <resources>
  <string-array name="array_exchanges">
   <item>Bitstamp</item>
+  <item>BTC China</item>
+  <item>Bit2c.co.il</item>
   <item>Btc-e</item>
   <item>Campbx</item>
   <item>CaVirtex</item>
@@ -13,6 +15,8 @@
  </string-array>
  <string-array name="array_exchange_values">
   <item>exch_bstp</item>
+  <item>exch_chna</item>
+  <item>exch_bitc</item>
   <item>exch_btce</item>
   <item>exch_cpbx</item>
   <item>exch_vrtx</item>
@@ -70,6 +74,7 @@
 
  <string-array name="array_owc_names">
    <item>USD</item>
+   <item>CNY</item>
    <item>EUR</item>
    <item>GBP</item>
    <item>JPY</item>
@@ -77,6 +82,7 @@
    <item>CAD</item>
    <item>AUD</item>
    <item>RUR</item>
+   <item>ILS</item>
  </string-array>
 
  <string-array name="array_intervals">

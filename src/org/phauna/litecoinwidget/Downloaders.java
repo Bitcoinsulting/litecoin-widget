@@ -101,6 +101,44 @@ public class Downloaders {
     return -1;
   }
 
+  public double getBtcchinaPrice() {
+    try {
+      URL url = new URL("https://vip.btcchina.com/bc/ticker");
+      toastLong("foo!");
+      String json = downloadReq(url);
+      toastLong("bar!");
+      if (json == null) return 0;
+      try {
+        JSONObject j = new JSONObject(json);
+        double price = j.getJSONObject("ticker").getDouble("last");
+        return price;
+      } catch (JSONException e) {
+        toastLong("jsonException parsing: " + json);
+      }
+    } catch (MalformedURLException e) {
+      assert false;
+    }
+    return 0;
+  }
+
+  public double getBit2cPrice() {
+    try {
+      URL url = new URL("https://www.bit2c.co.il/Exchanges/NIS/Ticker.json");
+      String json = downloadReq(url);
+      if (json == null) return 0;
+      try {
+        JSONObject j = new JSONObject(json);
+        double price = j.getDouble("ll");
+        return price;
+      } catch (JSONException e) {
+        toastLong("jsonException parsing: " + json);
+      }
+    } catch (MalformedURLException e) {
+      assert false;
+    }
+    return 0;
+  }
+
   public double getCoinbasePrice() {
     try {
       URL url = new URL("https://coinbase.com/api/v1/currencies/exchange_rates");

@@ -12,6 +12,8 @@ public class C {
   public static final String EXCH_CPBX = "exch_cpbx";
   public static final String EXCH_CBSE = "exch_cbse";
   public static final String EXCH_VRTX = "exch_vrtx";
+  public static final String EXCH_BITC = "exch_bitc";
+  public static final String EXCH_CHNA = "exch_chna";
 
   public static int exchangeCoins(String exchange) {
     if (   exchange.equals(EXCH_VREX)) {
@@ -22,7 +24,7 @@ public class C {
       return R.array.array_mcxn_coins;
     } else if (exchange.equals(EXCH_CRSY)) {
       return R.array.array_crsy_coins;
-    } else if (exchange.equals(EXCH_MGOX) || exchange.equals(EXCH_CPBX) || exchange.equals(EXCH_BSTP) || exchange.equals(EXCH_CBSE) || exchange.equals(EXCH_VRTX)) {
+    } else if (exchange.equals(EXCH_MGOX) || exchange.equals(EXCH_CPBX) || exchange.equals(EXCH_BSTP) || exchange.equals(EXCH_CBSE) || exchange.equals(EXCH_VRTX) || exchange.equals(EXCH_BITC) || exchange.equals(EXCH_CHNA)) {
       return R.array.array_mgox_coins;
     } else {
       return -1;
@@ -48,6 +50,8 @@ public class C {
       return "V'rex";
     } else if (exchange.equals(EXCH_CRSY)) {
       return "C'tsy";
+    } else if (exchange.equals(EXCH_BITC)) {
+      return "Bit2C";
     } else if (exchange.equals(EXCH_MCXN)) {
       return "mcxNW";
     } else if (exchange.equals(EXCH_BTCE)) {
@@ -62,6 +66,8 @@ public class C {
       return "C'bse";
     } else if (exchange.equals(EXCH_VRTX)) {
       return "CaVtx";
+    } else if (exchange.equals(EXCH_CHNA)) {
+      return "China";
     } else {
       return "???";
     }
@@ -88,6 +94,20 @@ public class C {
   public static final String GBP = "GBP";
   public static final String JPY = "JPY";
   public static final String CAD = "CAD";
+  public static final String CNY = "CNY";
+  public static final String ILS = "ILS";
+
+  public static String defaultOWC(String exchange) {
+    if (exchange.equals(EXCH_BITC)) {
+      return ILS;
+    } else if (exchange.equals(EXCH_VRTX)) {
+      return CAD;
+    } else if (exchange.equals(EXCH_CHNA)) {
+      return CNY;
+    } else {
+      return USD;
+    }
+  }
 
   public static final int DEFAULT_COLOR_TEXT = 0xffC9C9C9;
   public static final int DEFAULT_COLOR_BG = 0xbb494949;

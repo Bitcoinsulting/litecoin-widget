@@ -95,6 +95,8 @@ public class MainActivity extends PreferenceActivity implements
       cPref.setEntryValues(entries);
       String defaultCoin = entries[0].toString();
       e.putString(C.pref_key_coin, defaultCoin);
+      String defaultOWC = C.defaultOWC(exchange);
+      e.putString(C.pref_key_owc, defaultOWC);
       cPref.setSummary(defaultCoin);
       cPref.setEnabled(true);
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
