@@ -246,6 +246,8 @@ public class UpdateWidgetService extends Service {
         picId = R.drawable.litecoin;
       } else if (coin.equals("BTC")) {
         picId = R.drawable.bitcoin;
+      } else if (coin.equals("WDC")) {
+        picId = R.drawable.worldcoin;
       } else if (coin.equals("NMC")) {
         picId = R.drawable.namecoin;
       } else if (coin.equals("PPC")) {
@@ -272,7 +274,7 @@ public class UpdateWidgetService extends Service {
         String btcString = "";
         if (btcDouble != 0) {
           // extra precision for these coins:
-          if (coin.equals("PPC") || coin.equals("NMC") || coin.equals("FTC") || coin.equals ("FRC") || coin.equals("DVC") || coin.equals("XPM")) {
+          if (coin.equals("PPC") || coin.equals("NMC") || coin.equals("FTC") || coin.equals ("FRC") || coin.equals("DVC") || coin.equals("XPM") || coin.equals("WDC")) {
             btcString = "B" + roundBTCX(btcDouble);
           } else {
             btcString = "B" + roundBTC(btcDouble);

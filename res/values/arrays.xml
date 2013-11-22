@@ -32,6 +32,7 @@
    <item>XPM</item>
    <item>PPC</item>
    <item>FTC</item>
+   <item>WDC</item>
  </string-array>
 
  <string-array name="array_vrex_coins">
@@ -41,6 +42,7 @@
   <item>TRC</item>
   <item>FTC</item>
   <item>FRC</item>
+  <item>WDC</item>
  </string-array>
 
  <string-array name="array_crsy_coins">
@@ -51,6 +53,7 @@
   <item>TRC</item>
   <item>FTC</item>
   <item>FRC</item>
+  <item>WDC</item>
  </string-array>
 
  <string-array name="array_mgox_coins">
