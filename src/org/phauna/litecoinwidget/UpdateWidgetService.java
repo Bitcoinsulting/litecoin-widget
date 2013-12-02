@@ -164,6 +164,9 @@ public class UpdateWidgetService extends Service {
             priceOWC = convertFrom(C.USD, downloaders, priceOWC, owc);
             estimatedPriceOWC = true;
           }
+        } else if ((coin.equals("NVC") || coin.equals("NMC") || coin.equals("PPC")) && owc.equals("USD")) {
+          priceOWC = downloaders.getBtcePrice(coin, owc.toLowerCase());
+          estimatedPriceOWC = false;
         }
         if (!coin.equals("BTC")) {
           priceBTC = downloaders.getBtcePrice(coin, "btc");
@@ -224,12 +227,16 @@ public class UpdateWidgetService extends Service {
       cache.save(UpdateWidgetService.this.getApplicationContext());
       double mostRecentBtcPrice = cache.getPrice();
       if (priceOWC == 0) {
+        //Log.d(C.LOG, "UpdateWidgetService.priceOWC == 0");
+        //Log.d(C.LOG, "priceBTC = " + priceBTC + " mostRecentBtcPrice = " + mostRecentBtcPrice);
         priceOWC = priceBTC * mostRecentBtcPrice;
         estimatedPriceOWC = true;
+        //Log.d(C.LOG, "priceOWC prelim = " + priceOWC);
         if (!owc.equals(C.USD)) {
           priceOWC = convertFrom(C.USD, downloaders, priceOWC, owc);
           estimatedPriceOWC = true;
         }
+        //Log.d(C.LOG, "priceOWC final = " + priceOWC);
       }
       return new PriceInfo(arg, priceBTC, priceOWC, estimatedPriceOWC);
     }
