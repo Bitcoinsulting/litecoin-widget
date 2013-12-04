@@ -254,7 +254,7 @@ public class UpdateWidgetService extends Service {
       PriceTaskArgs args = result.getPriceTaskArgs();
       String exch = args.mExchangeId;
       String coin = args.mCoin;
-      int picId = R.drawable.litecoin;
+      int picId = R.drawable.unknowncoin;
       if (coin.equals("LTC")) {
         picId = R.drawable.litecoin;
       } else if (coin.equals("BTC")) {
@@ -277,6 +277,9 @@ public class UpdateWidgetService extends Service {
         picId = R.drawable.devcoin;
       } else if (coin.equals("XPM")) {
         picId = R.drawable.primecoin;
+      } else {
+        remoteViews.setTextViewText(R.id.coin, coin);
+        remoteViews.setViewVisibility(R.id.coin, View.VISIBLE);
       }
       remoteViews.setImageViewResource(R.id.widgetpic, picId);
       double btcDouble = result.getPriceBTC();

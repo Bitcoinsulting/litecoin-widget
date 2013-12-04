@@ -33,6 +33,9 @@ public class Downloaders {
   public Downloaders(UpdateWidgetService.GetPriceTask.Toaster toaster) {
     mToaster = toaster;
   }
+  public Downloaders() {
+    mToaster = null;
+  }
 
   public void toastLong(String msg) {
     msg = "LitecoinWidget: " + msg;
@@ -296,6 +299,29 @@ public class Downloaders {
     }
 
     return 0;
+  }
+
+  // all prices @ cryptsy are currently in BTC
+  public String[] getCryptsyCoins() {
+    try {
+      URL url = new URL("http://cryptsy.phauna.org/getTickers.php");
+      String json = downloadReq(url);
+      if (json == null) return null;
+      try {
+        JSONArray j = new JSONArray(json);
+        String[] arr = new String[j.length()];
+        for (int i = 0; i < j.length(); i++) {
+          arr[i] = j.getString(i);
+        }
+        return arr;
+      } catch (JSONException e) {
+        toastLong("jsonException parsing: " + json);
+      }
+    } catch (MalformedURLException e) {
+      assert false;
+    }
+
+    return null;
   }
 
   // all prices @ cryptsy are currently in BTC

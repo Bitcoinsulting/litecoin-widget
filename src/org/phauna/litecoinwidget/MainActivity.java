@@ -82,6 +82,27 @@ public class MainActivity extends PreferenceActivity implements
 
   }
 
+  private CharSequence[] getCoins(String exchange) {
+    if (   exchange.equals(C.EXCH_VREX)) {
+      return getResources().getStringArray(R.array.array_vrex_coins);
+    } else if (exchange.equals(C.EXCH_BTCE)) {
+      return getResources().getStringArray(R.array.array_btce_coins);
+    } else if (exchange.equals(C.EXCH_MCXN)) {
+      return getResources().getStringArray(R.array.array_mcxn_coins);
+    } else if (exchange.equals(C.EXCH_KRKN)) {
+      return getResources().getStringArray(R.array.array_krkn_coins);
+    } else if (exchange.equals(C.EXCH_CRSY)) {
+      Downloaders downloaders = new Downloaders();
+      return downloaders.getCryptsyCoins();
+    } else if (exchange.equals(C.EXCH_MGOX) || exchange.equals(C.EXCH_CPBX) || exchange.equals(C.EXCH_BSTP) || exchange.equals(C.EXCH_CBSE) || exchange.equals(C.EXCH_VRTX) || exchange.equals(C.EXCH_BITC) || exchange.equals(C.EXCH_CHNA) || exchange.equals(C.EXCH_BAVG)) {
+      return getResources().getStringArray(R.array.array_mgox_coins);
+    } else {
+      String[] res = new String[1];
+      res[0] = "BTC";
+      return res;
+    }
+  }
+
   public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
     if (key.equals(C.pref_key_exchange)) {
       // this editor is for saving the default coin preference when they switch exchanges
@@ -90,7 +111,7 @@ public class MainActivity extends PreferenceActivity implements
       Preference ePref = findPreference(C.pref_key_exchange);
       ePref.setSummary(C.exchangeName(exchange));
       ListPreference cPref = (ListPreference) findPreference(C.pref_key_coin);
-      CharSequence[] entries = getResources().getStringArray(C.exchangeCoins(exchange));
+      CharSequence[] entries = getCoins(exchange);
       cPref.setEntries(entries);
       cPref.setEntryValues(entries);
       String defaultCoin = entries[0].toString();
@@ -126,7 +147,7 @@ public class MainActivity extends PreferenceActivity implements
       String exchange = prefs.getString(C.pref_key_exchange, C.EXCH_VREX);
       Log.d(C.LOG, "MainActivity (" + mAppWidgetId + ") putting exchange: " + exchange);
       intent.putExtra(C.pref_key_exchange, exchange);
-      CharSequence[] entries = getResources().getStringArray(C.exchangeCoins(exchange));
+      CharSequence[] entries = getCoins(exchange);
       String coin = prefs.getString(C.pref_key_coin, entries[0].toString());
       Log.d(C.LOG, "MainActivity (" + mAppWidgetId + ") putting coin: " + coin);
       intent.putExtra(C.pref_key_coin, coin);

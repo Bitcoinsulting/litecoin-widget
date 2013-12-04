@@ -17,23 +17,6 @@ public class C {
   public static final String EXCH_BAVG = "exch_bavg";
   public static final String EXCH_KRKN = "exch_krkn";
 
-  public static int exchangeCoins(String exchange) {
-    if (   exchange.equals(EXCH_VREX)) {
-      return R.array.array_vrex_coins;
-    } else if (exchange.equals(EXCH_BTCE)) {
-      return R.array.array_btce_coins;
-    } else if (exchange.equals(EXCH_MCXN)) {
-      return R.array.array_mcxn_coins;
-    } else if (exchange.equals(EXCH_KRKN)) {
-      return R.array.array_krkn_coins;
-    } else if (exchange.equals(EXCH_CRSY)) {
-      return R.array.array_crsy_coins;
-    } else if (exchange.equals(EXCH_MGOX) || exchange.equals(EXCH_CPBX) || exchange.equals(EXCH_BSTP) || exchange.equals(EXCH_CBSE) || exchange.equals(EXCH_VRTX) || exchange.equals(EXCH_BITC) || exchange.equals(EXCH_CHNA) || exchange.equals(EXCH_BAVG)) {
-      return R.array.array_mgox_coins;
-    } else {
-      return -1;
-    }
-  }
 
   /*
   public static final String CFG_VREX_LTC = "vircurex_ltc";
