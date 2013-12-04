@@ -14,6 +14,8 @@ public class C {
   public static final String EXCH_VRTX = "exch_vrtx";
   public static final String EXCH_BITC = "exch_bitc";
   public static final String EXCH_CHNA = "exch_chna";
+  public static final String EXCH_BAVG = "exch_bavg";
+  public static final String EXCH_KRKN = "exch_krkn";
 
   public static int exchangeCoins(String exchange) {
     if (   exchange.equals(EXCH_VREX)) {
@@ -22,9 +24,11 @@ public class C {
       return R.array.array_btce_coins;
     } else if (exchange.equals(EXCH_MCXN)) {
       return R.array.array_mcxn_coins;
+    } else if (exchange.equals(EXCH_KRKN)) {
+      return R.array.array_krkn_coins;
     } else if (exchange.equals(EXCH_CRSY)) {
       return R.array.array_crsy_coins;
-    } else if (exchange.equals(EXCH_MGOX) || exchange.equals(EXCH_CPBX) || exchange.equals(EXCH_BSTP) || exchange.equals(EXCH_CBSE) || exchange.equals(EXCH_VRTX) || exchange.equals(EXCH_BITC) || exchange.equals(EXCH_CHNA)) {
+    } else if (exchange.equals(EXCH_MGOX) || exchange.equals(EXCH_CPBX) || exchange.equals(EXCH_BSTP) || exchange.equals(EXCH_CBSE) || exchange.equals(EXCH_VRTX) || exchange.equals(EXCH_BITC) || exchange.equals(EXCH_CHNA) || exchange.equals(EXCH_BAVG)) {
       return R.array.array_mgox_coins;
     } else {
       return -1;
@@ -50,6 +54,8 @@ public class C {
       return "V'rex";
     } else if (exchange.equals(EXCH_CRSY)) {
       return "C'tsy";
+    } else if (exchange.equals(EXCH_BAVG)) {
+      return "B-avg";
     } else if (exchange.equals(EXCH_BITC)) {
       return "Bit2C";
     } else if (exchange.equals(EXCH_MCXN)) {
@@ -64,6 +70,8 @@ public class C {
       return "cmpBX";
     } else if (exchange.equals(EXCH_CBSE)) {
       return "C'bse";
+    } else if (exchange.equals(EXCH_KRKN)) {
+      return "Kr'kn";
     } else if (exchange.equals(EXCH_VRTX)) {
       return "CaVtx";
     } else if (exchange.equals(EXCH_CHNA)) {

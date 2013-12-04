@@ -104,9 +104,7 @@ public class Downloaders {
   public double getBtcchinaPrice() {
     try {
       URL url = new URL("https://vip.btcchina.com/bc/ticker");
-      toastLong("foo!");
       String json = downloadReq(url);
-      toastLong("bar!");
       if (json == null) return 0;
       try {
         JSONObject j = new JSONObject(json);
@@ -147,6 +145,51 @@ public class Downloaders {
       try {
         JSONObject j = new JSONObject(json);
         double price = j.getDouble("btc_to_usd");
+        return price;
+      } catch (JSONException e) {
+        toastLong("jsonException parsing: " + json);
+      }
+    } catch (MalformedURLException e) {
+      assert false;
+    }
+    return 0;
+  }
+
+  public double getKrakenPrice(String coin, String owc) {
+    coin = coin.toUpperCase();
+    owc = owc.toUpperCase();
+    String coinverted = coin;
+    if (coin.equals("BTC")) {
+      coinverted = "XBT";
+    }
+    String silliness = "X" + coinverted + "Z" + owc;
+    try {
+      URL url = new URL("https://api.kraken.com/0/public/Ticker?pair=" + coinverted + owc);
+      String json = downloadReq(url);
+      if (json == null) return 0;
+      try {
+        JSONObject j = new JSONObject(json);
+        String priceS = j.getJSONObject("result").getJSONObject(silliness).getJSONArray("c").getString(0);
+        double price = Double.parseDouble(priceS);
+        return price;
+      } catch (JSONException e) {
+        toastLong("jsonException parsing: " + json);
+      }
+    } catch (MalformedURLException e) {
+      assert false;
+    }
+    return 0;
+  }
+
+  public double getBitcoinAveragePrice(String owc) {
+    owc = owc.toUpperCase();
+    try {
+      URL url = new URL("https://api.bitcoinaverage.com/ticker/" + owc);
+      String json = downloadReq(url);
+      if (json == null) return 0;
+      try {
+        JSONObject j = new JSONObject(json);
+        double price = j.getDouble("last");
         return price;
       } catch (JSONException e) {
         toastLong("jsonException parsing: " + json);

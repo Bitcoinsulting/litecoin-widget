@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
  <string-array name="array_exchanges">
+  <item>Bitcoinaverage.com</item>
   <item>Bitstamp</item>
   <item>BTC China</item>
   <item>Bit2c.co.il</item>
@@ -9,11 +10,13 @@
   <item>CaVirtex</item>
   <item>Coinbase</item>
   <item>Cryptsy</item>
-  <item>mcxNOW</item>
+  <item>Kraken</item>
+  <item>McxNOW</item>
   <item>Mtgox</item>
   <item>Vircurex</item>
  </string-array>
  <string-array name="array_exchange_values">
+  <item>exch_bavg</item>
   <item>exch_bstp</item>
   <item>exch_chna</item>
   <item>exch_bitc</item>
@@ -22,9 +25,16 @@
   <item>exch_vrtx</item>
   <item>exch_cbse</item>
   <item>exch_crsy</item>
+  <item>exch_krkn</item>
   <item>exch_mcxn</item>
   <item>exch_mgox</item>
   <item>exch_vrex</item>
+ </string-array>
+
+ <string-array name="array_krkn_coins">
+   <item>BTC</item>
+   <item>LTC</item>
+   <item>NMC</item>
  </string-array>
 
  <string-array name="array_mcxn_coins">

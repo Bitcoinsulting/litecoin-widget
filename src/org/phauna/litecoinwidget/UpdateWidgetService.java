@@ -173,56 +173,62 @@ public class UpdateWidgetService extends Service {
         }
       } else if (eid.equals(C.EXCH_MGOX)) {
         priceOWC = downloaders.getMtgoxPrice();
-        cache.updatePrice(eid, (float) priceOWC);
         if (!owc.equals("USD")) {
+          priceOWC = convertFrom(C.USD, downloaders, priceOWC, owc);
+          estimatedPriceOWC = true;
+        }
+      } else if (eid.equals(C.EXCH_BAVG)) {
+        priceOWC = downloaders.getBitcoinAveragePrice(owc);
+        if (owc.equals("USD")) {
+          cache.updatePrice(eid, (float) priceOWC);
+        }
+      } else if (eid.equals(C.EXCH_KRKN)) {
+        if (owc.equals("USD") || owc.equals("EUR")) {
+          priceOWC = downloaders.getKrakenPrice(coin, owc);
+        } else {
+          priceOWC = downloaders.getKrakenPrice(coin, "USD");
           priceOWC = convertFrom(C.USD, downloaders, priceOWC, owc);
           estimatedPriceOWC = true;
         }
       } else if (eid.equals(C.EXCH_CBSE)) {
         priceOWC = downloaders.getCoinbasePrice();
-        cache.updatePrice(eid, (float) priceOWC);
         if (!owc.equals("USD")) {
           priceOWC = convertFrom(C.USD, downloaders, priceOWC, owc);
           estimatedPriceOWC = true;
         }
       } else if (eid.equals(C.EXCH_BITC)) {
         priceOWC = downloaders.getBit2cPrice();
-        cache.updatePrice(eid, (float) priceOWC);
         if (!owc.equals("ILS")) {
           priceOWC = convertFrom(C.ILS, downloaders, priceOWC, owc);
           estimatedPriceOWC = true;
         }
       } else if (eid.equals(C.EXCH_BSTP)) {
         priceOWC = downloaders.getBitstampPrice();
-        cache.updatePrice(eid, (float) priceOWC);
         if (!owc.equals("USD")) {
           priceOWC = convertFrom(C.USD, downloaders, priceOWC, owc);
           estimatedPriceOWC = true;
         }
       } else if (eid.equals(C.EXCH_CHNA)) {
         priceOWC = downloaders.getBtcchinaPrice();
-        cache.updatePrice(eid, (float) priceOWC);
         if (!owc.equals("CNY")) {
           priceOWC = convertFrom(C.CNY, downloaders, priceOWC, owc);
           estimatedPriceOWC = true;
         }
       } else if (eid.equals(C.EXCH_CPBX)) {
         priceOWC = downloaders.getCampBXPrice();
-        cache.updatePrice(eid, (float) priceOWC);
         if (!owc.equals("USD")) {
           priceOWC = convertFrom(C.USD, downloaders, priceOWC, owc);
           estimatedPriceOWC = true;
         }
       } else if (eid.equals(C.EXCH_VRTX)) {
         priceOWC = downloaders.getVirtexPrice();
-        cache.updatePrice(eid, (float) priceOWC);
         if (!owc.equals(C.CAD)) {
           priceOWC = convertFrom(C.CAD, downloaders, priceOWC, owc);
           estimatedPriceOWC = true;
         }
       }
       if (!cache.hasRecentPrice()) {
-        cache.updatePrice(C.EXCH_MGOX, (float) downloaders.getMtgoxPrice());
+        cache.updatePrice(C.EXCH_BAVG, (float) downloaders.getBitcoinAveragePrice("USD"));
       }
       cache.save(UpdateWidgetService.this.getApplicationContext());
       double mostRecentBtcPrice = cache.getPrice();
