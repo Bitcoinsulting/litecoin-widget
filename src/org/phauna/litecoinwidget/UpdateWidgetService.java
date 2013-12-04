@@ -289,12 +289,7 @@ public class UpdateWidgetService extends Service {
         // generate a pretty BTC string (if any):
         String btcString = "";
         if (btcDouble != 0) {
-          // extra precision for these coins:
-          if (coin.equals("PPC") || coin.equals("NMC") || coin.equals("FTC") || coin.equals ("FRC") || coin.equals("DVC") || coin.equals("XPM") || coin.equals("WDC")) {
-            btcString = "B" + roundBTCX(btcDouble);
-          } else {
-            btcString = "B" + roundBTC(btcDouble);
-          }
+          btcString = "B" + roundBTCX(btcDouble);
         }
         // generate a pretty USD string (if any):
         String owcString = "";
